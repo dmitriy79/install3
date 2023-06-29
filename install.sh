@@ -215,7 +215,7 @@
     sleep 3
 
     sudo apt -y install software-properties-common build-essential
-    sudo apt -y install libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils git cmake libboost-all-dev zlib1g-dev libz-dev libseccomp-dev libcap-dev libminiupnpc-dev gettext
+    sudo apt -y install libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils git cmake zlib1g-dev libz-dev libseccomp-dev libcap-dev libminiupnpc-dev gettext
     sudo apt -y install libminiupnpc10 libzmq5
     sudo apt -y install libcanberra-gtk-module libqrencode-dev libzmq3-dev
     sudo apt -y install libqt5gui5 libqt5core5a libqt5webkit5-dev libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
@@ -374,7 +374,7 @@
 
     # Compil Blocknotify
     cd ~
-    git clone https://github.com/Kudaraidee/yiimp.git
+    git clone https://github.com/dmitriy79/yiimp3.git yiimp
     cd $HOME/yiimp/blocknotify
     sudo sed -i 's/tu8tu5/'$blckntifypass'/' blocknotify.cpp
     make -j$((`nproc`+1))
@@ -491,7 +491,7 @@
 
         location ~ ^/index\.php$ {
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+            fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
             fastcgi_index index.php;
             include fastcgi_params;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -528,7 +528,7 @@
             deny all;
       }
         location ~ /phpmyadmin/(.+\.php)$ {
-            fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+            fastcgi_pass unix:/run/php/php7.2-fpm.sock;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include fastcgi_params;
             include snippets/fastcgi-php.conf;
@@ -540,7 +540,7 @@
     sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
     sudo ln -s /var/web /var/www/$server_name/html
 	sudo ln -s /var/stratum/config /var/web/list-algos
-    sudo systemctl reload php7.3-fpm.service
+    sudo systemctl reload php7.2-fpm.service
     sudo systemctl restart nginx.service
     echo -e "$GREEN Done...$COL_RESET"
 
@@ -622,7 +622,7 @@
 
             location ~ ^/index\.php$ {
                 fastcgi_split_path_info ^(.+\.php)(/.+)$;
-                fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+                fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
                 fastcgi_index index.php;
                 include fastcgi_params;
                 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -653,7 +653,7 @@
             deny all;
     }
         location ~ /phpmyadmin/(.+\.php)$ {
-            fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+            fastcgi_pass unix:/run/php/php7.2-fpm.sock;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include fastcgi_params;
             include snippets/fastcgi-php.conf;
@@ -664,7 +664,7 @@
     ' | sudo -E tee /etc/nginx/sites-available/$server_name.conf >/dev/null 2>&1
     fi
 
-    sudo systemctl reload php7.3-fpm.service
+    sudo systemctl reload php7.2-fpm.service
     sudo systemctl restart nginx.service
     echo -e "$GREEN Done...$COL_RESET"
 
@@ -707,7 +707,7 @@
 
         location ~ ^/index\.php$ {
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+            fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
             fastcgi_index index.php;
             include fastcgi_params;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -744,7 +744,7 @@
             deny all;
     }
         location ~ /phpmyadmin/(.+\.php)$ {
-            fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+            fastcgi_pass unix:/run/php/php7.2-fpm.sock;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include fastcgi_params;
             include snippets/fastcgi-php.conf;
@@ -756,7 +756,7 @@
     sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
     sudo ln -s /var/web /var/www/$server_name/html
 	sudo ln -s /var/stratum/config /var/web/list-algos
-    sudo systemctl reload php7.3-fpm.service
+    sudo systemctl reload php7.2-fpm.service
     sudo systemctl restart nginx.service
     echo -e "$GREEN Done...$COL_RESET"
 
@@ -872,7 +872,7 @@
             deny all;
     }
         location ~ /phpmyadmin/(.+\.php)$ {
-            fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+            fastcgi_pass unix:/run/php/php7.2-fpm.sock;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include fastcgi_params;
             include snippets/fastcgi-php.conf;
@@ -885,7 +885,7 @@
     echo -e "$GREEN Done...$COL_RESET"
 
     fi
-    sudo systemctl reload php7.3-fpm.service
+    sudo systemctl reload php7.2-fpm.service
     sudo systemctl restart nginx.service
     fi
 
@@ -1191,8 +1191,8 @@
     sudo systemctl status mysql | sed -n "1,3p"
     sudo systemctl restart nginx.service
     sudo systemctl status nginx | sed -n "1,3p"
-    sudo systemctl restart php7.3-fpm.service
-    sudo systemctl status php7.3-fpm | sed -n "1,3p"
+    sudo systemctl restart php7.2-fpm.service
+    sudo systemctl status php7.2-fpm | sed -n "1,3p"
 
 
     echo
@@ -1228,7 +1228,7 @@
     echo -e "$RED YOU MUST REBOOT NOW  TO FINALIZE INSTALLATION !!! $COL_RESET"
     echo -e "$RED***************************************************$COL_RESET"
     echo -e "$RED if u have white page blank on site check          $COL_RESET"
-    echo -e "$RED php7.3-memcache | php7.3-memcached | php7.3-fpm   $COL_RESET"
+    echo -e "$RED php7.2-memcache | php7.2-memcached | php7.2-fpm   $COL_RESET"
     echo -e "$RED try just restart them first...                    $COL_RESET"
     echo -e "$RED***************************************************$COL_RESET"
     echo
