@@ -1189,8 +1189,8 @@
     sudo systemctl status mysql | sed -n "1,3p"
     sudo systemctl restart nginx.service
     sudo systemctl status nginx | sed -n "1,3p"
-    sudo systemctl restart php7.2-fpm.service
-    sudo systemctl status php7.2-fpm | sed -n "1,3p"
+    sudo systemctl restart php8.3-fpm.service
+    sudo systemctl status php8.3-fpm | sed -n "1,3p"
 
 
     echo
@@ -1226,7 +1226,7 @@
     echo -e "$RED YOU MUST REBOOT NOW  TO FINALIZE INSTALLATION !!! $COL_RESET"
     echo -e "$RED***************************************************$COL_RESET"
     echo -e "$RED if u have white page blank on site check          $COL_RESET"
-    echo -e "$RED php7.2-memcache | php7.2-memcached | php7.2-fpm   $COL_RESET"
+    echo -e "$RED php8.3-memcache | php8.3-memcached | php8.3-fpm   $COL_RESET"
     echo -e "$RED try just restart them first...                    $COL_RESET"
     echo -e "$RED***************************************************$COL_RESET"
     echo
