@@ -108,11 +108,11 @@
     echo
     sleep 3
 
-    if [ -f /usr/sbin/apache2 ]; then
-    echo -e "Removing apache..."
-    sudo apt-get -y purge apache2 apache2-*
-    sudo apt-get -y --purge autoremove
-    fi
+  #  if [ -f /usr/sbin/apache2 ]; then
+  #  echo -e "Removing apache..."
+  #  sudo apt-get -y purge apache2 apache2-*
+  #  sudo apt-get -y --purge autoremove
+  #  fi
 
     sudo apt -y install nginx
     sudo rm /etc/nginx/sites-enabled/default
@@ -214,12 +214,17 @@
     sleep 3
 
     sudo apt -y install software-properties-common build-essential
+	apt install gcc-9 g++-9 cpp-9
+	sudo apt-get install libssh-dev
     sudo apt -y install libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils git cmake zlib1g-dev libz-dev libseccomp-dev libcap-dev libminiupnpc-dev gettext
     sudo apt -y install libminiupnpc-dev libzmq5
     sudo apt -y install libcanberra-gtk-module libqrencode-dev libzmq3-dev
     sudo apt -y install libqt5gui5 libqt5core5a libqt5webkit5-dev libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
     sudo apt -y update
     sudo apt -y install libdb5.3 libdb5.3++
+	sudo apt update -y
+	sudo apt dist-upgrade -y
+	sudo apt autoremoce -y
     echo -e "$GREEN Done...$COL_RESET"
 
 
